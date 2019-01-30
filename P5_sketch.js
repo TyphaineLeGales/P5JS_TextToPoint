@@ -7,11 +7,11 @@ function preload(){
 }
 
 function setup (){
-  var canvas = createCanvas(1400, 800);
+  var canvas = createCanvas(600, 200);
   canvas.parent('canvasContainer');
-  textSize(250);
+  textSize(100);
   textFont(myFont);
-  points = myFont.textToPoints('hello world', 50, 300);
+  points = myFont.textToPoints('hello world', 50, 120);
   points.forEach(function(dot) {
     var vehicle = new Vehicle(dot.x, dot.y);
     vehicles.push(vehicle);
@@ -21,8 +21,9 @@ function setup (){
 }
 
 function draw(){
-background(255);
+background(15,36,250);
 vehicles.forEach(function(vehicle) {
+  vehicle.behaviours();
   vehicle.update();
   vehicle.show();
 });
