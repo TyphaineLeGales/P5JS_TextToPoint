@@ -12,6 +12,10 @@ function Vehicle(x, y) {
   this.behaviours = function() {
     var arrive = this.arrive(this.target);
     this.applyForce(arrive);
+
+    var mouse = createVector(mouseX, mouseY);
+    var flee = this.flee(mouse);
+    this.applyForce(flee);
   }
 
   this.applyForce = function(force) {
@@ -56,5 +60,21 @@ function Vehicle(x, y) {
     return steer;
   }
 
+  this.flee = function(target) {
+    var desired = p5.Vector.sub(target, this.pos);
+    var d = desired.mag();
+    if (d<50) {
+      desired.setMag(this.maxspeed);
+      //changing the desired vector to the point in the opposite direction
+      desired.mult(-1);
+      var steer = p5.Vector.sub(desired,this.vel);
+      steer.limit(this.maxforce);
+      return steer;
+    } else {
+      return createVector(0,0);
+    }
+  }
 }
+
+
 
