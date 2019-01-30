@@ -1,7 +1,5 @@
 var myFont;
 var points = [];
-let angle = 0;
-var lineX = [];
 var vehicles = [];
 
 function preload(){
@@ -17,7 +15,7 @@ function setup (){
   points.forEach(function(dot) {
     var vehicle = new Vehicle(dot.x, dot.y);
     vehicles.push(vehicle);
-    console.log(vehicles);
+
   });
 
 }
