@@ -19,6 +19,7 @@ function setup (){
 
 function draw(){
 background(255);
+orbitControl();
 points.forEach(function(dot) {
   push();
   translate(dot.x, dot.y);
